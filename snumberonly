@@ -1,0 +1,14 @@
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char); 
+begin 
+  if not (Key in [#8, '0'..'9', DecimalSeparator]) then 
+  begin
+     ShowMessage('Invalid key: ' + Key); 
+     Key := #0; 
+  end 
+  else 
+  if (Key = DecimalSeparator) and (Pos(Key, Edit1.Text) > 0) then 
+  begin 
+    ShowMessage('Invalid Key: twice ' + Key); 
+    Key := #0; 
+  end; 
+end;
